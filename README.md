@@ -1,10 +1,10 @@
-# LINAC_V1.0
+# LINAC_V1.1
 LINAC (Nombre clave) es un placa basada en SAMD21 para montaje directo en motores NEMA23, aunque se puede usar en todo tipo de motores a pasos bipolares. Por medio de comandos Seriales muy sencillos, se puede configurar cualquier motor para usarse en modo angular o lineal.
 
 LINAC se puede programar por USB o por puerto serial, basta con conectarlo a una funente de hasta 24v, conectar el USB, abrir el puerto Serie en 9600 baudios, y se comenzará a comunicar con la PC. solamente necesitas teclear info; y LINAC te mostará un menú muy completo de opciones que puedes programar en el.
 
 
-LINAC - Version 1.0 - 02/12/2019
+LINAC - Version 1.1 - 02/12/2019
 Modulo de control de motor a pasos bipolar con programación y comandos seriales.
 La velocidad por defecto es de 9600 baudios
  
