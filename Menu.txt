@@ -1,0 +1,73 @@
+ ----------------
+ | Instrucciones |
+ ----------------
+--------------------------------------------------------------------------------------------------
+ Hay 2 comandos principales:
+ set  - Escribe en la memoria de la tarjeta un nuevo valor
+ get  - Lee desde la memoria de la tarjeta un valor existente
+ Para que se considere un comando valido, debe terminar con ;
+--------------------------------------------------------------------------------------------------
+ Comandos GET Para lectura de valores:
+ get,registro
+ get,registro,subregistro
+ donde: registro      es la variable a leer.
+        ,             es el caracter de separacion entre comandos.
+        subregistro   puede ser un subregistro de registro.
+ --------------------------------------------------------------------------------------------------
+ Comandos SET para cambiar la configuracion:
+ set,registro
+ set,registro,valor
+ set,registro,subregistro,valor
+ donde: registro      es la variable a configurar.
+        ,             es el caracter de separacion entre comandos
+        subregistro   puede ser un subregistro de registro.
+        ,             es el caracter de separacion entre comandos
+        valor         es el valor que se escribira en ese registro.
+                      y puede tomar valores positivos y negativos o tener pseudonimos.
+  --------------------------------------------------------------------------------------------------
+ Ejemplo de comandos set:
+ set,pos,40.16;         -> ajusta la posicion actual del actuador en 40.16mm
+  set,move,120;          -> mueve el actuador a la posicion 120mm con la ultima velocidad configurada
+ set,speed,12.05;       -> ajusta la velocidad actual a 12.05m/s
+ set,move,250.5,30.5;   -> mueve el actuador a la posicion 250.5mm con una velocidad de 30.5mm/s
+ --------------------------------------------------------------------------------------------------
+ 
+ Lista de comandos get:
+ get,pos         -> devuelve la posicion actual del actuador
+ get,speed       -> devuelve velocidad actual del actuador.
+ get,sensor      -> devuelve la lectura del sensor, HIGH o LOW, segun la logica configurada.
+ 
+ --------------------------------------------------------------------------------------------------
+ Lista de comandos set:
+ set,zero                 -> Configura la posicion actual en 0.00mm
+ set,home                 -> Manda el actuador a posicion home, con velocidad fija de 4mm/s
+ set,sensor,high          -> Configura la logica del sensor de limite para activarse con HIGH
+ set,sensor,low           -> Configura la logica del sensor de limite para activarse con LOW
+ set,motor,enable         -> Habilita el motor, dejandolo enclavado en la posicion actual y connsumiendo corriente
+ set,motor,disable        -> Deshabilita el motor, sin consumo de corriente
+ set,motor,ustep,1/1      -> Configura el motor en 200 pasos por revolucion, paso normal
+ set,motor,ustep,1/2      -> Configura el motor en 400 pasos por revolucion, micropaso 1/2
+ set,motor,ustep,1/8      -> Configura el motor en 1600 pasos por revolucion, micropaso 1/8
+ set,motor,ustep,1/16     -> Configura el motor en 3200 pasos por revolucion, micropaso 1/16
+ set,speed,min            -> Configura la velocidad del motor al minimo, default: 0.01mm/s
+ set,speed,max            -> Configura la velocidad del motor al minimo, default: 60 mm/s
+ set,speed,min,____       -> Introduciendo un valor al final, configura la velocidad minima del motor (minimo: 0.01) - SIN IMPLEMENTAR
+ set,speed,max,____       -> Introduciendo un valor al final, configura la velocidad minima del motor (maximo 1000.00) - SIN IMPLEMENTAR
+ set,ack,moving,enable    -> Habilita la impresion de la posicion mientras el motor se esta moviendo
+ set,ack,moving,disable   -> Deshabilita la impresion de la posicion mientras el motor se esta moviendo
+ set,speed,____           -> Configura la velocidad del actuador en mm/s (pueden ser decimas o centesimas de mm/s)
+ set,move,____            -> Mueve el actuador a la posicion indicada en mm (pueden ser decimas o centesimas de mm)
+ set,pos,____             -> Configura una nueva posicion sin mover el actuador. Min: 0.00, Max: largo de actuador
+ set,move,____,____       -> Si al comando set,move se le agregan 2 valores, el primero sera la posicion en mm y el segundo la velocidad en mm/s
+ set,actuator,length,____ -> Configura el largo del actuador, minimo en 0.01, maximo en 10000.00mm (10m)
+ set,button,repeat,____   -> Configura el tiempo de espera despues de presionar el boton, para seguir ejecutando la accion. Min: 0ms, Max: 1000ms
+ set,button,jump,____     -> Configra los saltos de los botones UP y DOWN en mm. Min: 0.01mm, Max: 10mm
+ ------------------------------------------------------------------------------------------------
+
+ Comandos directos:
+
+ stop                     -> Detiene el motor en la posicion actual
+ pause                    -> Pausa el motor en la posicion actual
+ resume                   -> Continua el movimiento hacia la ultima posicion indicada
+ info                     -> Muestra este menu
+ ------------------------------------------------------------------------------------------------
